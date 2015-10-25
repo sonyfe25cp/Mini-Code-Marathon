@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+          http://www.springframework.org/schema/beans/spring-beans-3.0.xsd"
+       default-autowire="byName">
+
+
+    <!-- 用来定义那些类需要采用事物管理 spring 事物的动态代理类 BeanNameAutoProxyCreator 根据类名自动代理，接受表达式 -->
+    <bean id="BeanProxy"
+          class="org.springframework.aop.framework.autoproxy.BeanNameAutoProxyCreator">
+        <property name="beanNames">
+            <!-- 对类名以MybatisService结尾的类进行代理 -->
+            <value>*Service</value>
+        </property>
+        <!-- 对代理类进行加载拦截器(实现通知的过程) -->
+        <property name="interceptorNames">
+            <list>
+                <value>transactionInterceptor</value>
+            </list>
+        </property>
+    </bean>
+
+
+</beans>
