@@ -10,7 +10,6 @@ import org.apache.thrift.TException;
 import org.kohsuke.args4j.Option;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import sun.swing.StringUIClientPropertyKey;
 
 import java.io.File;
 import java.io.IOException;
@@ -63,9 +62,12 @@ public class KeywordSearchServer extends ADataService {
         String word = req.getWord();
         int number = req.getNumber();
 
+        number = number > 0 ? number : 1; //request at least one result
+
         KeywordResponse response = new KeywordResponse();
         List<Keyword> keywords = new ArrayList<>();
-        if (word.length() < 3) {
+
+        if (StringUtils.isEmpty(word) || word.length() < 3) {
             response.setWords(keywords);
             return response;
         }

@@ -76,7 +76,7 @@ public class SimpleTrie {
         }
         Node newRoot = node;
 
-        logger.debug("prefix:{}, newroot :{}", prefix, newRoot.value);
+//        logger.debug("prefix:{}, newroot :{}", prefix, newRoot.value);
 
         List<String> strings = new ArrayList<>();
         bps(newRoot, strings, prefix, length);
