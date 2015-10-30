@@ -80,7 +80,7 @@ public class KeywordSearchServer extends ADataService {
         response.setWords(keywords);
 
         long l2 = System.currentTimeMillis();
-        logger.info("req:{}, cost:{}ms, size:{}, results:{}", new String[]{req.toString(), (l2 - l1) + "", response.getWords().size() + "", response.toString()});
+//        logger.info("req:{}, cost:{}ms, size:{}, results:{}", new String[]{req.toString(), (l2 - l1) + "", response.getWords().size() + "", response.toString()});
         return response;
     }
 

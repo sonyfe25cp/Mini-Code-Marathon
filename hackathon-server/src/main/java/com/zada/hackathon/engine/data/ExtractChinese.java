@@ -21,7 +21,7 @@ public class ExtractChinese {
 
 
     public void extract() throws IOException {
-        File file = new File("news.txt");
+        File file = new File("chinese");
 
         ThreadPoolExecutor executor = new ThreadPoolExecutor(8, 8, 1, TimeUnit.DAYS, new ArrayBlockingQueue<Runnable>(16), new ThreadPoolExecutor.CallerRunsPolicy());
         File pname = new File("chinese.txt");
@@ -81,7 +81,7 @@ public class ExtractChinese {
                         Set<String> set = new HashSet<>();
                         for (Term term : terms) {
                             String name = term.getName();
-                            if (name.length() > 2 && isNotWholeNumber(name)) {
+                            if (name.length() > 3 && isNotWholeNumber(name)) {
                                 set.add(name);
                             }
                         }
@@ -96,7 +96,7 @@ public class ExtractChinese {
         }
     }
 
-    static Pattern pattern = Pattern.compile("\\d+");
+    static Pattern pattern = Pattern.compile("[\\w\\d]+");
 
     static boolean isNotWholeNumber(String string) {
         Matcher matcher = pattern.matcher(string);
