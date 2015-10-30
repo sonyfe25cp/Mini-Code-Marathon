@@ -1,11 +1,3 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: Administrator
-  Date: 2015/10/23 0023
-  Time: 下午 8:41
-  To change this template use File | Settings | File Templates.
---%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -25,9 +17,9 @@
         <div class="form-group">
             <input id="search-input" class="form-control" placeholder="Input something." style="width: 570px">
         </div>
-        <%--<button class="btn btn-primary">--%>
-            <%--<span class="search-button-text">Search</span>--%>
-        <%--</button>--%>
+        <#--<%--<button class="btn btn-primary">--%>-->
+            <#--<%--<span class="search-button-text">Search</span>--%>-->
+        <#--<%--</button>--%>-->
 </div>
 </div>
 
