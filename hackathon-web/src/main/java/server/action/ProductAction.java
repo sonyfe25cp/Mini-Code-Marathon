@@ -7,9 +7,11 @@ import com.zada.hackathon.gen.KeywordRequest;
 import com.zada.hackathon.gen.KeywordResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import server.service.KeywordService;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -25,6 +27,9 @@ import java.util.Map;
 public class ProductAction {
     static Logger logger = LoggerFactory.getLogger(ProductAction.class);
 
+    @Autowired
+    private KeywordService keywordService;
+
     @RequestMapping("")
     public String index() {
         return "index";
@@ -35,31 +40,30 @@ public class ProductAction {
         return "index";
     }
 
-    static DataClients dataClients = new DataClients("127.0.0.1:9090,127.0.0.1:9090");
+
 
     @RequestMapping(value = "/getName")
     @ResponseBody
     public List<Map<String, String>> getName(String q, int limit) {
-
         logger.info("q:{}, limit:{}", q, limit);
-
-        KeywordRequest keywordRequest = new KeywordRequest();
-        keywordRequest.setWord(q);
-        keywordRequest.setNumber(limit);
         List<Map<String, String>> list = new ArrayList<Map<String, String>>();
 
-        try {
-            KeywordResponse response = dataClients.searchKeyword(keywordRequest);
-            List<Keyword> words = response.getWords();
-            for (Keyword keyword : words) {
-                String word = keyword.getWord();
-                Map<String, String> map = new HashMap<String, String>();
-                map.put("name", word);
-                map.put("to", keyword.getCount() + "");
-                list.add(map);
-            }
-        } catch (ClientException e) {
-            e.printStackTrace();
+        if (limit <= 0  || q == null || "".equals(q)) {
+            return list;
+        }
+
+
+        List<Keyword> words = keywordService.getPromptList(q,limit);
+        if (words == null || words.size() == 0){
+            return list;
+        }
+
+        for (Keyword keyword : words) {
+            String word = keyword.getWord();
+            Map<String, String> map = new HashMap<String, String>();
+            map.put("name", word);
+            map.put("to", keyword.getCount() + "");
+            list.add(map);
         }
         return list;
     }
