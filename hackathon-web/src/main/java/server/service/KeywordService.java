@@ -23,13 +23,15 @@ public class KeywordService {
 
     public List<Keyword> getPromptList(String q, int limit) {
 
-        List<Keyword> words;
+        if (limit <= 0  || q == null || "".equals(q)) {
+            return new ArrayList<Keyword>();
+        }
 
         KeywordRequest keywordRequest = new KeywordRequest();
         keywordRequest.setWord(q);
         keywordRequest.setNumber(limit);
 
-
+        List<Keyword> words;
         try {
             KeywordResponse response = dataClients.searchKeyword(keywordRequest);
             words = response.getWords();
