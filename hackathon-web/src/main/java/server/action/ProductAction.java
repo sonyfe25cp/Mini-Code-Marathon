@@ -1,10 +1,6 @@
 package server.action;
 
-import com.zada.hackathon.client.ClientException;
-import com.zada.hackathon.client.DataClients;
 import com.zada.hackathon.gen.Keyword;
-import com.zada.hackathon.gen.KeywordRequest;
-import com.zada.hackathon.gen.KeywordResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
