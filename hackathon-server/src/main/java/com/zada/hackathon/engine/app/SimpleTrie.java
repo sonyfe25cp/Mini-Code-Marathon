@@ -27,7 +27,8 @@ public class SimpleTrie {
         }
         Node node = root;
         for (int i = 0; i < str.length(); i++) {
-            String curr = str.charAt(i) + "";
+//            String curr = str.charAt(i) + "";
+            char curr = str.charAt(i);
             boolean containsKey = node.son.containsKey(curr);
             if (containsKey) {
 
@@ -47,7 +48,8 @@ public class SimpleTrie {
         }
         Node node = root;
         for (int i = 0; i < word.length(); i++) {
-            String curr = word.charAt(i) + "";
+//            String curr = word.charAt(i) + "";
+            char curr = word.charAt(i);
             boolean containsKey = node.son.containsKey(curr);
             if (containsKey) {
                 node = node.son.get(curr);
@@ -66,7 +68,8 @@ public class SimpleTrie {
         }
         Node node = root;
         for (int i = 0; i < prefix.length(); i++) {
-            String curr = prefix.charAt(i) + "";
+//            String curr = prefix.charAt(i) + "";
+            char curr = prefix.charAt(i);
             boolean containsKey = node.son.containsKey(curr);
             if (containsKey) {
                 node = node.son.get(curr);
@@ -98,11 +101,11 @@ public class SimpleTrie {
     }
 
     private void bps(Node root, List<String> words, String prefix, int length) {
-        Map<String, Node> son = root.son;
+        Map<Character, Node> son = root.son;
 
         for (Node current : son.values()) {
             boolean isEnd = current.isEnd;
-            String value = current.value;
+            char value = current.value;
             String tmpStr = prefix + value;
             if (words.size() >= length) {
                 return;
@@ -119,11 +122,11 @@ public class SimpleTrie {
 
     class Node {
 
-        Map<String, Node> son;
+        Map<Character, Node> son;
 
         boolean isEnd;
 
-        String value;
+        char value;
 
         public Node() {
             super();

@@ -20,7 +20,15 @@ fi
 
 abspath=`pwd`/$webpath
 
-for (( i=1; i<3; i++)); do
+count=2
+if [[ $# -ne 0 ]]; then
+  count=$1
+fi
+
+echo "启动 $count 个web服务器"
+
+
+for (( i=1; i<= $count ; i++)); do
   docker run -p 808$i:8080 -v $abspath:/usr/local/tomcat/webapps/ROOT -d docker.cn/docker/tomcat:8-jre8
   echo "启动tomcat，端口：808"$i
 done
