@@ -15,19 +15,23 @@ import java.util.*;
 public class SimpleTrie {
 
     static Logger logger = LoggerFactory.getLogger(SimpleTrie.class);
+
     Node root;
 
     public SimpleTrie() {
         root = new Node();
     }
 
+    /**
+     * 建立Trie树
+     * @param str
+     */
     public void add(String str) {
         if (str == null || str.length() == 0) {
             return;
         }
         Node node = root;
         for (int i = 0; i < str.length(); i++) {
-//            String curr = str.charAt(i) + "";
             char curr = str.charAt(i);
             boolean containsKey = node.son.containsKey(curr);
             if (containsKey) {
@@ -42,13 +46,17 @@ public class SimpleTrie {
         node.isEnd = true;
     }
 
+    /**
+     * 查询是否包含某个词
+     * @param word
+     * @return
+     */
     public boolean contains(String word) {
         if (word == null || word.length() == 0) {
             return false;
         }
         Node node = root;
         for (int i = 0; i < word.length(); i++) {
-//            String curr = word.charAt(i) + "";
             char curr = word.charAt(i);
             boolean containsKey = node.son.containsKey(curr);
             if (containsKey) {
@@ -61,6 +69,12 @@ public class SimpleTrie {
         return isEnd;
     }
 
+    /**
+     * 前缀查询
+     * @param prefix
+     * @param length
+     * @return
+     */
     public List<Keyword> searchFromTrie(String prefix, int length) {
         List<Keyword> list = new ArrayList<>();
         if (StringUtils.isEmpty(prefix)) {
@@ -68,7 +82,6 @@ public class SimpleTrie {
         }
         Node node = root;
         for (int i = 0; i < prefix.length(); i++) {
-//            String curr = prefix.charAt(i) + "";
             char curr = prefix.charAt(i);
             boolean containsKey = node.son.containsKey(curr);
             if (containsKey) {
@@ -91,7 +104,7 @@ public class SimpleTrie {
 //            }
 //        });
 
-        Collections.sort(strings);
+        Collections.sort(strings);//
 
         for (String str : strings) {
             Keyword keyword = new Keyword(str, 0);
@@ -100,6 +113,13 @@ public class SimpleTrie {
         return list;
     }
 
+    /**
+     * 广度优先遍历
+     * @param root
+     * @param words
+     * @param prefix
+     * @param length
+     */
     private void bps(Node root, List<String> words, String prefix, int length) {
         Map<Character, Node> son = root.son;
 
@@ -120,6 +140,9 @@ public class SimpleTrie {
     }
 
 
+    /**
+     * 节点
+     */
     class Node {
 
         Map<Character, Node> son;
