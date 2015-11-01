@@ -75,7 +75,9 @@ sentences: 0.5mio data about reviews from amazon and 0.5mio Chinese phrases from
 
 Our team won the second prize.
 
-:( There are enough space to improve our algorithm about prefix searching.
+There are enough space to improve our algorithm about prefix searching.
+
+:(
 
 ##License
 
