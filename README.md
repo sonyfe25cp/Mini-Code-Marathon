@@ -1,12 +1,12 @@
 ##Mini Code Marathon2015
 
-##官网
+##Portal
 
 ![website](http://scbcode.hirede.com/Templates/Scb/Images/banner.jpg)
 
 [花儿与编程项目](http://scbcode.hirede.com/CareerSite/ScbIndex)
 
-##题目
+##The subject in this  mini code marathon
 
 Google-style search box. Key requirements:
 •	Google-style intelligent search, after typing 3 letters, prompt and narrow down matched list (note – UI friendly so don’t overflow the screen) whilst allowing user to continue type and refine search condition.
