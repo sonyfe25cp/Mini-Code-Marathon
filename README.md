@@ -43,7 +43,7 @@ http://maven.apache.org/
 
 http://tomcat.apache.org/
 
-##部署
+##Deployment
 
 1.Compile
 
@@ -65,7 +65,7 @@ http://tomcat.apache.org/
 
 ##Document
 
-见 doc/
+doc/google_style_search.pdf (Chinese)
 
 ##Data
 
