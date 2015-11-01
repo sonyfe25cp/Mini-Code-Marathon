@@ -20,6 +20,6 @@ fi
 
 abspath=`pwd`/$webpath
 
-docker run -p 80:8080 -v $abspath:/usr/local/tomcat/webapps/ROOT -d docker.cn/docker/tomcat:8-jre8
+docker run -p 80:8080 -v $abspath:/usr/local/tomcat/webapps/ROOT -d tomcat:8-jre8
 
 echo "启动tomcat，端口:80 "

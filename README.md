@@ -15,7 +15,7 @@ Google-style search box. Key requirements:
 •	No other UI element is required. Key is the actual search box and responsiveness of the intelli-search.
 
 
-##环境配置
+##Runntime Environment
 
 1. JDK
 
@@ -29,7 +29,7 @@ Google-style search box. Key requirements:
 
     0.9.2
 
-##开源工具
+##Tools used in this project
 
 ###Thrift
 
@@ -45,31 +45,45 @@ http://tomcat.apache.org/
 
 ##部署
 
-1.编译代码
+1.Compile
 
- 1. 在项目根目录下执行 `./thrift_gen.sh`，用于生成thrift代码和基础类文件
- 2. 编译clint项目。进入hackathon-client目录，执行 `mvn clean install`。
- 3. 编译server项目。进入hackathon-server目录，执行 `mvn clean assembly:assembly`，在target下生成hackathon-server-0.1-SNAPSHOT-jar-with-dependencies.jar文件
- 4. 编译web项目。进入hackathon-web目录，执行`mvn clean package`，在target目录下生成hackathon-web-0.1.war文件。
+ 1. run `./thrift_gen.sh` to get the source code about thrift
+ 2. run `cd hackathon-client` and exec `mvn clean install` to get the jar file about client.
+ 3. run `cd hackathon-server` and exec `mvn clean assembly:assembly` to get the exec jar file about server.
+ 4. run `cd hackathon-web` and exec `mvn clean package` to get the war file about web project.
 
-2.运行项目
+2.Run without Docker
 
- 1. 运行server，在项目根目录下执行 `java -jar hackathon-server/target/hackathon-server-0.1-SNAPSHOT-jar-with-dependencies.jar -f <data file absloate path>`
-    以开发环境为例：数据文件为sentences文件，执行命令：
-    `java -jar hackathon-server/target/hackathon-server-0.1-SNAPSHOT-jar-with-dependencies.jar -f /Users/omar/workspace/zada-hackathon/sentences`
- 2. 部署web项目。将hackathon-web-0.1.war拷贝到tomcat文件夹中webapps目录中，并重命名为ROOT.war。
- 3. 启动web项目。在tomcat文件夹下bin目录中执行`startup.sh`
+ 1. run server with `java -jar hackathon-server/target/hackathon-server-0.1-SNAPSHOT-jar-with-dependencies.jar -f <data file absloate path>`
+ 2. run web project with tomcat, just cp that war file to the `webapps` folder of Tomcat.
 
-##文档
+3.Run with Docker
+
+ 1. exec `./runWeb.sh`, then you can get a web server on the port 80.
+ 2. if you want to run more web servers, exec `./run2Web.sh <number>`, then you can get more.
+
+
+##Document
 
 见 doc/
 
-##数据
+##Data
 
-sentences:100w条中英文混合文本，按行分割。
+sentences: 0.5mio data about reviews from amazon and 0.5mio Chinese phrases from news.
+
+##Ranking
+
+Our team won the second prize.
+
+:( There are enough space to improve our algorithm about prefix searching.
 
 ##License
 
 Licensed under the Apache license.
 
 
+##Group Members
+
+* Shuai Wang
+* Lin Chen
+* Jie Chen
